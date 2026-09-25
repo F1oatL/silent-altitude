@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SILENT ALTITUDE — F1oatL Portfolio</title>
+<title>李智涛 · 个人简历 | F1oatL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -270,6 +270,96 @@
     color:rgba(244,241,234,.35);text-transform:uppercase;
   }
 
+  /* ---------- 简历版块 ---------- */
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:clamp(2.5rem,6vh,4rem)}
+  .sec-head h2{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:.1em;
+  }
+  .sec-head .count{font-size:.66rem;letter-spacing:.4em;color:rgba(244,241,234,.4)}
+
+  .about-grid{
+    margin-top:clamp(2.4rem,5vh,3.4rem);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1.7rem 2.4rem;text-align:left;
+  }
+  .about-item .k{
+    font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  }
+  .about-item .v{margin-top:.5rem;font-size:.94rem;letter-spacing:.06em;color:var(--ink)}
+  .about-note{
+    margin-top:2.6rem;padding-top:1.8rem;
+    border-top:1px solid rgba(244,241,234,.08);
+    font-size:clamp(.82rem,1.3vw,.95rem);line-height:2;
+    letter-spacing:.12em;color:rgba(244,241,234,.62);
+  }
+
+  .entry{padding:clamp(1.8rem,4vh,2.8rem) .4rem}
+  .entry + .entry{border-top:1px solid rgba(244,241,234,.07)}
+  .entry-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:1.5rem;flex-wrap:wrap;
+  }
+  .entry h3{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.2rem,2.5vw,1.75rem);letter-spacing:.04em;line-height:1.4;
+  }
+  .entry h3 .zh-sub{
+    display:block;margin-top:.45rem;
+    font-family:var(--sans);font-weight:300;
+    font-size:.72rem;letter-spacing:.24em;
+    color:rgba(244,241,234,.55);
+  }
+  .entry .when{
+    font-size:.68rem;letter-spacing:.3em;
+    color:rgba(244,241,234,.48);white-space:nowrap;
+  }
+  .entry .role{
+    margin-top:.75rem;
+    font-size:.7rem;letter-spacing:.3em;color:var(--gold);
+  }
+  .entry .desc{
+    margin-top:1.15rem;max-width:74ch;
+    font-size:clamp(.86rem,1.35vw,.98rem);
+    line-height:2.05;letter-spacing:.05em;
+    color:rgba(244,241,234,.68);
+  }
+  .entry .desc + .desc{margin-top:.7rem}
+
+  .skill-row{
+    display:grid;grid-template-columns:auto 1fr;align-items:baseline;
+    gap:clamp(1.2rem,3vw,2.6rem);padding:clamp(1.3rem,2.8vh,1.9rem) .4rem;
+  }
+  .skill-row + .skill-row{border-top:1px solid rgba(244,241,234,.07)}
+  .skill-row .num{font-family:var(--sans);font-weight:200;font-size:.8rem;letter-spacing:.2em;color:var(--gold)}
+  .skill-name{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.15rem,2.2vw,1.5rem);letter-spacing:.06em;
+  }
+  .skill-desc{
+    margin-top:.45rem;
+    font-size:.86rem;line-height:1.9;letter-spacing:.06em;
+    color:rgba(244,241,234,.6);
+  }
+
+  .contact-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;
+  }
+  .contact-card{
+    display:block;padding:1.9rem 1.6rem;
+    border:1px solid rgba(244,241,234,.09);
+    text-decoration:none;color:inherit;
+    transition:border-color .6s,transform .6s cubic-bezier(.2,.6,.2,1);
+  }
+  .contact-card:hover{border-color:var(--gold-dim);transform:translateY(-6px)}
+  .contact-card .k{
+    font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  }
+  .contact-card .v{
+    margin-top:.8rem;font-size:.92rem;letter-spacing:.05em;
+    overflow-wrap:anywhere;
+  }
+
   /* ---------- 移动端降级 ---------- */
   @media (max-width:640px){
     .work{grid-template-columns:auto 1fr;grid-template-rows:auto auto;row-gap:.3rem}
@@ -277,6 +367,9 @@
     .work .cat{grid-column:2}
     .work .year{display:none}
     .emblem-ring{width:78vw;height:78vw}
+    .about-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:repeat(2,1fr)}
+    .entry .when{white-space:normal}
   }
 
   /* ---------- 降低动效 ---------- */
@@ -306,60 +399,151 @@
       <div class="hero-fade"></div>
     </div>
     <div class="hero-title">
-      <p class="eyebrow">Portfolio · MMXXVI</p>
-      <h1>SILENT&nbsp;ALTITUDE</h1>
-      <p class="sub">QUIET WORKS AMONG MOUNTAINS · 山与作品之间的静默</p>
+      <p class="eyebrow">Curriculum Vitae · MMXXVI</p>
+      <h1>李智涛</h1>
+      <p class="sub">LI ZHITAO · APPLIED STATISTICS · 数据与洞察</p>
     </div>
     <div class="scroll-hint">Scroll</div>
   </div>
 </header>
 
-<!-- ============ 引言 ============ -->
+<!-- ============ 引言 + 基本信息 ============ -->
 <section class="block" id="intro">
   <div class="quote-wrap reveal">
     <span class="corner tl"></span><span class="corner tr"></span>
     <span class="corner bl"></span><span class="corner br"></span>
     <span class="quote-mark">&ldquo;</span>
-    <p class="quote-en">The mountain says nothing, yet everything becomes clear.</p>
-    <p class="quote-zh">山不语，而万物自明。</p>
+    <p class="quote-en">Let the data speak — softly, and with clarity.</p>
+    <p class="quote-zh">让数据发声，温和而清晰。</p>
+    <div class="about-grid">
+      <div class="about-item"><p class="k">Name 姓名</p><p class="v">李智涛</p></div>
+      <div class="about-item"><p class="k">Birth 年龄</p><p class="v">23 岁</p></div>
+      <div class="about-item"><p class="k">City 现居</p><p class="v">北京</p></div>
+      <div class="about-item"><p class="k">Degree 学历</p><p class="v">硕士在读</p></div>
+      <div class="about-item"><p class="k">Phone 电话</p><p class="v">188 1142 0263</p></div>
+      <div class="about-item"><p class="k">Email 邮箱</p><p class="v">18811420263@163.com</p></div>
+      <div class="about-item"><p class="k">GitHub</p><p class="v">github.com/F1oatL</p></div>
+      <div class="about-item"><p class="k">Political 政治面貌</p><p class="v">共青团员</p></div>
+    </div>
+    <p class="about-note">乐观开朗、乐于助人，具备良好的团队合作能力与快速学习能力；热爱足球，曾获校内院系杯冠军。</p>
   </div>
 </section>
 
-<!-- ============ Selected Works ============ -->
-<section class="block" id="works">
-  <div class="works-head reveal">
-    <h2>Selected Works</h2>
-    <span class="count">04 Projects — 2024 / 2026</span>
+<!-- ============ 教育经历 ============ -->
+<section class="block" id="education">
+  <div class="sec-head reveal">
+    <h2>Education</h2>
+    <span class="count">教育经历 — 2021 / 至今</span>
   </div>
-  <div class="works-list">
-    <a class="work reveal" href="#works">
-      <span class="num">01</span>
-      <span class="title">Silent Altitude<span class="zh">寂静海拔</span></span>
-      <span class="cat">Visual / Film</span>
-      <span class="year">2026</span>
-      <span class="line"></span><span class="arrow">→</span>
-    </a>
-    <a class="work reveal" href="#works">
-      <span class="num">02</span>
-      <span class="title">Supernova Goose<span class="zh">超新鹅</span></span>
-      <span class="cat">Illustration</span>
-      <span class="year">2025</span>
-      <span class="line"></span><span class="arrow">→</span>
-    </a>
-    <a class="work reveal" href="#works">
-      <span class="num">03</span>
-      <span class="title">Alpine Light Study<span class="zh">高山光影研究</span></span>
-      <span class="cat">Photography</span>
-      <span class="year">2025</span>
-      <span class="line"></span><span class="arrow">→</span>
-    </a>
-    <a class="work reveal" href="#works">
-      <span class="num">04</span>
-      <span class="title">Lumen Type<span class="zh">流明字体实验</span></span>
-      <span class="cat">Typography</span>
-      <span class="year">2024</span>
-      <span class="line"></span><span class="arrow">→</span>
-    </a>
+  <div class="entries">
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>应用统计学 <span class="zh-sub">人工智能与数据工程方向</span></h3>
+        <span class="when">2025 — 至今 · 硕士在读</span>
+      </div>
+      <p class="role">首都经济贸易大学 · Beijing</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>经济统计学 <span class="zh-sub">在校均分 86 / 100</span></h3>
+        <span class="when">2021 — 2025 · 本科</span>
+      </div>
+      <p class="role">首都经济贸易大学 · Beijing</p>
+      <p class="desc">主修课程：金融统计分析、统计学、应用回归、多元回归、统计预测与决策、R 语言、Python 统计分析等。</p>
+      <p class="desc">证书奖项：大学英语四级（CET-4）、SPSSPRO 数据分析证书、普通话二级甲等、年度优秀团员、优秀志愿者。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 专业技能 ============ -->
+<section class="block" id="skills">
+  <div class="sec-head reveal">
+    <h2>Skills</h2>
+    <span class="count">专业技能</span>
+  </div>
+  <div class="skills-list">
+    <div class="skill-row reveal"><span class="num">01</span><div><p class="skill-name">R 语言</p><p class="skill-desc">统计建模与数据分析（RStudio）：回归分析、LASSO 变量筛选、市场调查建模</p></div></div>
+    <div class="skill-row reveal"><span class="num">02</span><div><p class="skill-name">Python</p><p class="skill-desc">数据挖掘与机器学习：多元线性回归、决策树、数据收集与预处理</p></div></div>
+    <div class="skill-row reveal"><span class="num">03</span><div><p class="skill-name">SQL</p><p class="skill-desc">数据查询、清洗与处理</p></div></div>
+    <div class="skill-row reveal"><span class="num">04</span><div><p class="skill-name">Excel</p><p class="skill-desc">数据整理、核对与可视化报表</p></div></div>
+    <div class="skill-row reveal"><span class="num">05</span><div><p class="skill-name">AI 辅助分析</p><p class="skill-desc">熟练借助 AI 工具完成项目提效与数据准确率优化</p></div></div>
+    <div class="skill-row reveal"><span class="num">06</span><div><p class="skill-name">英语 · CET-4</p><p class="skill-desc">可阅读英文资料与行业报告</p></div></div>
+  </div>
+</section>
+
+<!-- ============ 项目经历 ============ -->
+<section class="block" id="projects">
+  <div class="sec-head reveal">
+    <h2>Projects</h2>
+    <span class="count">项目经历 — 2023 / 2025</span>
+  </div>
+  <div class="entries">
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>“正大杯”市场调查与分析大赛</h3>
+        <span class="when">2023.11 — 2024.3</span>
+      </div>
+      <p class="role">核心成员 · 主导分析</p>
+      <p class="desc">荣获市场调查大赛初赛证书；作为核心成员主导“大学生最爱的线上购物促销活动”项目，通过线上线下多元渠道收集有效样本，运用 RStudio 深入处理数据并构建精准分析模型，深度洞察大学生消费偏好。</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>足球运动员（进攻球员）评分预测模型研究</h3>
+        <span class="when">2023.9 — 2023.12</span>
+      </div>
+      <p class="role">独立研究 · 建模与优化</p>
+      <p class="desc">独立完成模型构建与优化：运用特征矩阵挑选、逐步回归双向选择、LASSO 等方法筛选关键变量，对比多种模型并依据 R²、RMSE、MSE 等指标评估，成功解决多重共线性等难题，提升模型预测性能。</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>数据科学 Python 数据挖掘实习项目 <span class="zh-sub">南京拓尔思智能系统有限公司</span></h3>
+        <span class="when">2024.6 — 2024.9</span>
+      </div>
+      <p class="role">数据挖掘实习生</p>
+      <p class="desc">系统强化数据挖掘与 Python 机器学习技能；在《民宿价格预测》《信用卡交易诈骗预测》项目中负责数据收集与预处理，运用多元线性回归、决策树等模型，实现预测精准度达 80%，积累扎实的数据驱动项目实操经验。</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>本科毕业论文：京津冀地区新质生产力水平测度及其经济效应分析</h3>
+        <span class="when">2024.12 — 2025.5</span>
+      </div>
+      <p class="role">独立完成 · 全流程研究</p>
+      <p class="desc">独立完成从指标体系构建到实证分析的全流程研究：搭建新质生产力评价指标体系，对京津冀 2010—2022 年面板数据进行测度，揭示其动态演进与区域差异规律；构建多种模型探究经济效应，证实新质生产力对经济增长的显著正向作用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 实习经历 ============ -->
+<section class="block" id="experience">
+  <div class="sec-head reveal">
+    <h2>Experience</h2>
+    <span class="count">实习经历 — 2023 / 2025</span>
+  </div>
+  <div class="entries">
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>中指控股（房天下中指研究院）</h3>
+        <span class="when">2025.3 — 2025.5</span>
+      </div>
+      <p class="role">数据分析师</p>
+      <p class="desc">参与数据分析项目，协助完成数据收集、处理与分析；配合团队优化房天下数据库，运用 AI 算法使数据准确率提升至 95% 以上；深度参与房产信息梳理，对房屋地段等关键数据进行多维度分析，为公司房产市场研究报告提供数据支撑。</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>海峰科技</h3>
+        <span class="when">2024.1 — 2024.4</span>
+      </div>
+      <p class="role">金融数据分析师</p>
+      <p class="desc">负责“尽调宝”产品数据库的日常维护与优化，收集多家公司财务报表并核对财务数据；完成青岛、无锡、南京三地产业发展研究项目，深入调研 50 余份行业报告，总结各地产业发展趋势与投资机会，输出详尽的市场分析报告。</p>
+    </div>
+    <div class="entry reveal">
+      <div class="entry-top">
+        <h3>浙江国正信企业管理有限公司北分</h3>
+        <span class="when">2023.6 — 2023.9</span>
+      </div>
+      <p class="role">金融客户经理</p>
+      <p class="desc">负责核实并修复客户信息准确性，整理客户信件与表格，定期获取并更新客户资料；有效提醒并促进客户归还逾期账款，提升回款率；制作并优化客户信息整理表格，提升团队工作效率。</p>
+    </div>
   </div>
 </section>
 
@@ -444,6 +628,28 @@
   </div>
 </section>
 
+<!-- ============ 联系方式 ============ -->
+<section class="block" id="contact">
+  <div class="sec-head reveal">
+    <h2>Contact</h2>
+    <span class="count">联系方式</span>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-card reveal" href="tel:18811420263">
+      <p class="k">Phone</p><p class="v">188 1142 0263</p>
+    </a>
+    <a class="contact-card reveal" href="mailto:18811420263@163.com">
+      <p class="k">Email</p><p class="v">18811420263@163.com</p>
+    </a>
+    <a class="contact-card reveal" href="https://github.com/F1oatL" target="_blank" rel="noopener">
+      <p class="k">GitHub</p><p class="v">github.com/F1oatL</p>
+    </a>
+    <div class="contact-card reveal">
+      <p class="k">Location</p><p class="v">北京 · Beijing</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 落款 ============ -->
 <section class="colophon" id="colophon">
   <div class="inner reveal">
@@ -452,8 +658,8 @@
     <p class="zh-note">二〇二六年秋 题于北京</p>
   </div>
   <footer>
-    <span>&copy; 2026 F1oatL</span>
-    <span>Silent Altitude · Beijing</span>
+    <span>&copy; 2026 李智涛 · F1oatL</span>
+    <span>Curriculum Vitae · Beijing</span>
   </footer>
 </section>
 

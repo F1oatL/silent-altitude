@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html data-page-node-id="y6zjblC5QCKSzp1sh57xry" lang="zh-CN">
 <head data-page-node-id="K0h0l6GWp2YyLhopIsd67h">
-<script data-page-node-id="ICIPoYYZki4tP4t6iVTqig" src="/page/page_comm/inject.js"></script>
 <meta data-page-node-id="H4mStNKjmQzzEt19PrI0hK" charset="UTF-8">
 <meta data-page-node-id="Z1PMTyfiJtG0EcqKeKZRER" content="width=device-width, initial-scale=1.0" name="viewport">
 <title data-page-node-id="CmJaUgRXHSVyJu8sBMgj0x" data-pnid-children="hpVAPZ9LG97oYnr81A6phJ">olist 数据看板 · 静与动 — F1oatL</title>
@@ -391,12 +390,12 @@
   var gotHeight = false;
   var guard = null;
   modecap.innerHTML = caps.still;
+  ensureIframe();   /* 预载：用户还没切到「动」就开始下载，切换即所见 */
 
   function ensureIframe(){
     if (iframe) return;
     iframe = document.createElement('iframe');
     iframe.setAttribute('title', 'olist 可交互看板');
-    iframe.setAttribute('loading', 'lazy');
     iframe.src = 'olist-viz/index.html?embed=1';
     paneLive.appendChild(iframe);
     /* 6 秒内没收到高度上报，判定为加载失败（路径不存在 / 跨域 / 脚本异常） */
@@ -406,7 +405,7 @@
         if (fallback) fallback.classList.add('show');
         frame.style.height = '';
       }
-    }, 6000);
+    }, 12000);
   }
 
   /* 交互看板自报高度 → 框随内容长高，不裁切、不出现内部滚动条 */

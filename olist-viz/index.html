@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html data-page-node-id="Op40Fh5h3FHEh34HZE5d5X" lang="zh-CN">
+<head data-page-node-id="d4teRh0rGGoapHJV3X9Bgl">
+
+<meta data-page-node-id="FkvCOzrCiggyk6tN3Leekp" charset="UTF-8">
+<meta data-page-node-id="UBP8YOnARnLFoUrVVUN2Ng" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="jFYPqsmrPHw2Yhj75istUG" data-pnid-children="aIiVSwbfHLf6gVkjqNrNgL">Olist 平台经营看板 · 2017–2018</title>
+<style data-page-node-id="ANQjNlGC3FOXE6AnHpkmZW" data-pnid-children="1C2Cgi7iUDTrYZ8qm2gmHJ">
+  :root{
+    --bg:#050507; --panel:#0b0b0f; --panel-2:#101015;
+    --line:rgba(244,241,234,.085); --line-strong:rgba(244,241,234,.16);
+    --ink:#f4f1ea; --muted:#8b8880; --dim:#5f5d58;
+    --gold:#c9a13f; --gold-soft:rgba(201,161,63,.16);
+    --blue:#8fb3c9; --warn:#cf7a5f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 56px;
+    min-height:100vh;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.028;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1380px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3{font-family:"Noto Serif SC","Songti SC",Georgia,serif;font-weight:500;margin:0;letter-spacing:.02em;}
+
+  /* ---------- header ---------- */
+  header.top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    padding:34px 0 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .kicker{display:block;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  header.top h1{font-size:27px;line-height:1.2;}
+  .sub{margin:8px 0 0;font-size:12.5px;color:var(--muted);letter-spacing:.01em;}
+  .top-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .src{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.6;}
+  .src b{color:var(--ink);font-weight:500;}
+  .btn{appearance:none;background:transparent;border:1px solid var(--line-strong);color:var(--ink);
+    font-size:12px;padding:8px 14px;border-radius:2px;cursor:pointer;letter-spacing:.04em;
+    transition:border-color .18s,background .18s;}
+  .btn:hover{border-color:var(--gold);background:var(--gold-soft);}
+  .btn.ghost{border-color:transparent;color:var(--muted);padding:8px 10px;}
+  .btn.ghost:hover{color:var(--ink);background:transparent;border-color:var(--line);}
+
+  /* ---------- filters ---------- */
+  .filters{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;padding:18px 0;
+    border-bottom:1px solid var(--line);}
+  .fbox{display:flex;flex-direction:column;gap:8px;min-width:0;}
+  .flabel{font-size:10.5px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;}
+  .flabel span{color:var(--muted);letter-spacing:.02em;text-transform:none;margin-left:6px;}
+  select{appearance:none;background:var(--panel);color:var(--ink);border:1px solid var(--line-strong);
+    font-size:12px;padding:7px 10px;border-radius:2px;font-family:inherit;cursor:pointer;}
+  select:focus{outline:none;border-color:var(--gold);}
+  .mrange{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim);}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;max-width:100%;}
+  .chip{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:transparent;
+    padding:5px 10px;border-radius:999px;cursor:pointer;transition:all .16s;white-space:nowrap;}
+  .chip:hover{color:var(--ink);border-color:var(--line-strong);}
+  .chip.on{color:#0a0a0c;background:var(--gold);border-color:var(--gold);font-weight:500;}
+  .chip.hint{cursor:default;color:var(--dim);border-style:dashed;}
+  .chip.hint:hover{color:var(--dim);border-color:var(--line);}
+
+  /* ---------- kpi ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    margin-top:26px;border:1px solid var(--line);}
+  .kpi{background:var(--panel);padding:18px 20px 16px;}
+  .kpi .k{font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;}
+  .kpi .v{font-size:29px;margin-top:10px;font-weight:400;letter-spacing:-.01em;
+    font-variant-numeric:tabular-nums;font-family:Georgia,"Noto Serif SC",serif;}
+  .kpi .d{font-size:11.5px;color:var(--dim);margin-top:8px;font-variant-numeric:tabular-nums;}
+  .kpi .d em{font-style:normal;color:var(--gold);}
+  .kpi .d em.down{color:var(--warn);}
+
+  /* ---------- grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px;}
+  .panel{background:var(--panel);border:1px solid var(--line);padding:16px 18px 10px;min-width:0;
+    transition:border-color .2s;}
+  .panel:hover{border-color:var(--line-strong);}
+  .span7{grid-column:span 7;} .span5{grid-column:span 5;}
+  .span3{grid-column:span 3;} .span6{grid-column:span 6;}
+  .phead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px;}
+  .panel h2{font-size:13.5px;color:var(--ink);}
+  .panel .cap{font-size:10.5px;color:var(--dim);letter-spacing:.04em;}
+  .chart{width:100%;height:286px;}
+  .chart.tall{height:300px;}
+  .note{font-size:10.5px;color:var(--dim);margin:0 0 6px;letter-spacing:.02em;}
+  .seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .seg button{appearance:none;background:transparent;border:0;color:var(--muted);font-size:10.5px;
+    padding:5px 9px;cursor:pointer;font-family:inherit;letter-spacing:.04em;}
+  .seg button.on{background:var(--gold-soft);color:var(--gold);}
+
+  /* ---------- insight ---------- */
+  .insight{padding:16px 20px 18px;}
+  .insight .dyn{font-size:11.5px;color:var(--muted);border-left:2px solid var(--gold);
+    padding:2px 0 2px 10px;margin:8px 0 16px;line-height:1.7;font-variant-numeric:tabular-nums;}
+  .finding{margin:0 0 14px;font-size:12.5px;line-height:1.78;color:#d8d4ca;}
+  .finding b{color:var(--ink);font-weight:500;}
+  .finding .n{display:inline-block;width:16px;color:var(--gold);font-family:Georgia,serif;}
+  .foot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:10.5px;
+    color:var(--dim);line-height:1.8;}
+
+  /* ---------- toast ---------- */
+  #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;
+    background:#15151b;border:1px solid var(--line-strong);color:var(--ink);font-size:12px;
+    padding:10px 18px;border-radius:2px;pointer-events:none;transition:all .25s;z-index:80;max-width:80vw;}
+  #toast.show{opacity:1;transform:translate(-50%,0);}
+
+  @media (max-width:1180px){
+    .span7,.span5{grid-column:span 12;}
+    .span3{grid-column:span 6;} .span6{grid-column:span 12;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px;}
+    header.top{padding-top:24px;}
+    header.top h1{font-size:21px;}
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .kpi .v{font-size:23px;}
+    .span3,.span6{grid-column:span 12;}
+    .filters{gap:16px;}
+    .chart{height:250px;}
+  }
+
+  /* ---------- embed 模式：被 olist.html 以 iframe 调用 ----------
+     隐藏自有页头与核心发现（叙事由外层页面承担），只保留器械本身；
+     框宽约 1100px，需覆盖 ≤1180px 的单列断点，保持桌面双列栅格 */
+  html.embed body{padding-bottom:20px;}
+  html.embed header.top{display:none;}
+  html.embed .wrap{padding-top:14px;}
+  html.embed .panel.insight{display:none;}
+  html.embed .grid .insight + .panel, html.embed .dyn{display:none;}
+  html.embed .span7{grid-column:span 6;}
+  html.embed .span5{grid-column:span 5;}
+  html.embed .span3{grid-column:span 3;}
+  html.embed .kpis{grid-template-columns:repeat(4,1fr);}
+  html.embed .chart{height:236px;}
+  html.embed .chart.tall{height:264px;}
+  html.embed .kpi{padding:14px 18px 12px;}
+  html.embed .kpi .v{font-size:24px;}
+  html.embed .grid{margin-top:10px;}
+  html.embed .panel{padding:14px 16px 12px;}
+  /* 版面镜像 Power BI 中排（趋势｜州｜评分｜品类）：
+     品类图在嵌入模式下不参与并列，避免与成品版逐根对比 */
+  html.embed .catp{grid-column:span 12;}
+</style>
+</head>
+<body data-page-node-id="WSDFSTMUFYQS7otczrKVjJ">
+<script data-page-node-id="TPl4XJEqTXJ4KBdulJ88PX" data-pnid-children="6WRG7tg7OpPn3VuGpTd4IN">if (location.search.indexOf('embed') >= 0) document.documentElement.classList.add('embed');</script>
+<div data-page-node-id="aWU1mxszemtrIvbkDOghcO" class="wrap">
+
+  <header data-page-node-id="M9SrV8lfGG1Rl17G15IK7S" class="top">
+    <div data-page-node-id="fJgdU9ygF48MtVxR9teJt5">
+      <span data-page-node-id="u5yu0yxsad1aG0bqM87UBf" class="kicker"><!--pnid:rP6rmGWfldA4EztmTpLsWB-->Olist · Business Analytics</span>
+      <h1 data-page-node-id="RxBgVI4fMCH9I6bEJ6grye"><!--pnid:G4J8DPln1MamFMhnylWc9e-->平台经营看板</h1>
+      <p data-page-node-id="YAb27BMC93win4jTeeiPzj" class="sub" id="period"><!--pnid:bR2lc5WjZFkDbNritRLCVA-->2017.01 — 2018.08 · 52,000 单 · 13 品类 · 15 州</p>
+    </div>
+    <div data-page-node-id="rosWvxBgjMPXZlRxdRprM4" class="top-right">
+      <div data-page-node-id="kUU537zvxbRmhOqT4OfnzE" class="src" id="srcInfo"><!--pnid:Y2ra4uLmpkGvAMB7PiXtLy-->数据源：内置数据集<br data-page-node-id="lnJfFCOvAbjwpFj3te6gt2"><!--pnid:6fyLlf7IhARnFmYGin9tmY-->生成于 —</div>
+      <label data-page-node-id="9uwRT89BPUszBNy8iCzsxr" class="btn" for="file"><!--pnid:FuKGB11ERPpjRO6AXbb6ek-->导入数据</label>
+      <input data-page-node-id="RM3AMWaGMn7t7jrtF1EFOD" accept=".xlsx,.xls" hidden id="file" type="file">
+      <button data-page-node-id="VYfyakKgnHqEFYt9df96v2" class="btn ghost" id="reset"><!--pnid:kSVzTIEyHABuR0gxGzSf10-->重置筛选</button>
+    </div>
+  </header>
+
+  <section data-page-node-id="ClzoGTnW0Jix2FksO0QOlx" class="filters">
+    <div data-page-node-id="x62T52g6dK3IXghD0AbM8E" class="fbox">
+      <span data-page-node-id="R0YMMtDziaVN0pU4PQmiE5" class="flabel"><!--pnid:qK0zb9itgOgqXMvBtU9cHu-->时间范围</span>
+      <div data-page-node-id="XxedjxqiClSearLqb0EMhP" class="mrange">
+        <select data-page-node-id="xoUVya2pE4RoEymWamZrdQ" id="mFrom"></select>
+        <span data-page-node-id="vED202kpL1ox5Gu3D5w0GZ"><!--pnid:xDhxBRLET4ooA28SJHIwt6-->至</span>
+        <select data-page-node-id="3kTm05lcPOhjcn97IXNQHW" id="mTo"></select>
+      </div>
+    </div>
+    <div data-page-node-id="XLPyDq6Z5rRBja2Hmr1ITE" class="fbox" style="flex:1 1 380px">
+      <span data-page-node-id="ao9w7MZTpdOPgPRfRrZD7n" class="flabel"><!--pnid:DgwrGJlHeGLxx5oJU05fv3-->品类<span data-page-node-id="2uTZfUBGJ2zdhZiNVV9svo" id="catHint"><!--pnid:2N43khA7DyaQWDtM1h3hOv-->全部</span></span>
+      <div data-page-node-id="1ZZMdJizzx0T9S22yTtpu3" class="chips" id="catChips"></div>
+    </div>
+    <div data-page-node-id="YciwROSDEjQHX4EGfhbV9D" class="fbox" style="flex:1 1 320px">
+      <span data-page-node-id="igrymaotA9khNWurEhAhgY" class="flabel"><!--pnid:mlDswkiYmdfKelIzV3ruqu-->州<span data-page-node-id="1aY5qTRXIKdcUzxu1HjvoY" id="stHint"><!--pnid:eZLcyNpEFHJJ3OPczee5JQ-->全部</span></span>
+      <div data-page-node-id="JtlZSvENeMXazcI5HH5akI" class="chips" id="stChips"></div>
+    </div>
+  </section>
+
+  <section data-page-node-id="1d2a1wEtKUuBwuKhdtHCXj" class="kpis">
+    <div data-page-node-id="PAj9ie8cuEk71dP3jGT77f" class="kpi"><div data-page-node-id="2a5YuJY7U5NOAB6To2l6tq" class="k"><!--pnid:nVefC2P1nyo6x80dxUksRC-->GMV</div><div data-page-node-id="XpZ490fGYYAxAqHe5eM17l" class="v" id="kGmv"><!--pnid:1Xba0ZbUQ8Go5D0jmAD7P9-->—</div><div data-page-node-id="QyxW2Qj3n6sUWqMeTTiDOK" class="d" id="kGmvD"><!--pnid:whdvpou5QRa9F356YLj11V-->—</div></div>
+    <div data-page-node-id="YOfMYq2kJcyo0CRuNT0Boy" class="kpi"><div data-page-node-id="NiJX1foNzMo1mDxlxPwCkO" class="k"><!--pnid:slMWGxxOpU40JI3qgzPn0a-->订单数</div><div data-page-node-id="P0oA4Asg6CVlbDMgspBRzw" class="v" id="kOrd"><!--pnid:Wxt2afsSIvjypP0quW47Ps-->—</div><div data-page-node-id="GJBt3dQOB65rSUTrugAqZV" class="d" id="kOrdD"><!--pnid:tTYwg5CbHn92XFqoywymBF-->—</div></div>
+    <div data-page-node-id="j2KEr3vnZ5nVMrLUDFgI7r" class="kpi"><div data-page-node-id="kBSouMalpAjxEEyKB6IzXE" class="k"><!--pnid:6e3kUbc6gBhAE37VcL6EVE-->客单价</div><div data-page-node-id="3Sh3Kmfl8E36RniePGou9I" class="v" id="kAov"><!--pnid:x5gwDcJGyFlOa6mlfFVtOV-->—</div><div data-page-node-id="LXzcdeSfXbThWFTz6YAWGA" class="d" id="kAovD"><!--pnid:exk6WHyYO6SP4XCSvYrTFi-->—</div></div>
+    <div data-page-node-id="9YJIKce8vBsJLvprnWeLO8" class="kpi"><div data-page-node-id="gX8P7JY1oQI7Zid54zWC7W" class="k"><!--pnid:t3p4GTUfC7Dg1OzGmb5lg4-->复购率</div><div data-page-node-id="hPvtIm8KnWbqmTYRPKGBZH" class="v" id="kRep"><!--pnid:t9STnalrYylJuTg294TdTu-->—</div><div data-page-node-id="p40dU97WXUuYxEQ9hQwLw4" class="d" id="kRepD"><!--pnid:3peEpG2G4whGZsAz30siYm-->—</div></div>
+  </section>
+
+  <section data-page-node-id="5iuT4mip2xQk4XW8D4ZZgB" class="grid">
+    <div data-page-node-id="hToa6arylyaXQsGfIG3aAY" class="panel span7">
+      <div data-page-node-id="81VCog0fFDKH92TkuHnDEy" class="phead">
+        <h2 data-page-node-id="PV6Hj14gLnsEp7froRz4ts"><!--pnid:cHxx4bplj96G3rkADVV9s9-->GMV 月度趋势</h2>
+        <div data-page-node-id="MoemRfke7SdNmovCTJBe53" class="seg" id="trendSeg">
+          <button data-page-node-id="RtLeTgTmwQq8Qen4pUwSON" class="on" data-m="yoy"><!--pnid:Sp7TaE1nvCTYrWzYukvbX3-->同比</button>
+          <button data-page-node-id="ePJ09i3q9Y1omAc20bIdyY" data-m="mom"><!--pnid:L9bQwifOdgSQ2Xe3DXM5x5-->环比</button>
+        </div>
+      </div>
+      <div data-page-node-id="g6OfgF2NsehFNp6fuKXIZK" class="chart tall" id="chartTrend"></div>
+      <p data-page-node-id="W4RWHFCW7AT9wF1ouOnCvA" class="note"><!--pnid:biikoyRF0JGA5CMleFQ6rL-->柱 = 当月 GMV ｜ 线 = 同比 / 环比（右轴）· 2017 年无基期，同比为空</p>
+    </div>
+
+    <div data-page-node-id="LzWpWa7r3zonyRaYbD9SIp" class="panel span5 catp">
+      <div data-page-node-id="rpjABAMDB2XkoTc2kDT1fl" class="phead"><h2 data-page-node-id="3AjYYMCzS8BBwzGPFYuFXO"><!--pnid:q33rqIlolLL6i5D5lAHL6A-->品类 GMV</h2><span data-page-node-id="Y4Vy6J2x6bEQubyGKu9sMn" class="cap"><!--pnid:TCUmum8rrUmw2OrOAHFhRh-->点击筛选</span></div>
+      <div data-page-node-id="Ke7ijuP20KHn9XmzM9PY1r" class="chart tall" id="chartCat"></div>
+      <p data-page-node-id="k2MlVWXnXrirF96ODZOQVI" class="note"><!--pnid:MIw2LCiCCwAU3CNHq2asLm-->13 个品类全量，按 GMV 降序</p>
+    </div>
+
+    <div data-page-node-id="0AgsVP8mn1kEq3zZn5gdXA" class="panel span3">
+      <div data-page-node-id="lRfqg90FGsZfh3w9q5A5oK" class="phead"><h2 data-page-node-id="cesGWisLlSaoZELU7e0Fzk"><!--pnid:A6Esm6erQBt3ZhmqKrShQP-->州 GMV</h2><span data-page-node-id="JA9BP4U6GyKi7FHW8icGxg" class="cap"><!--pnid:EwCoAgPzjNSAFDkzm0d9mw-->点击筛选</span></div>
+      <div data-page-node-id="Ii6QXKcv6YHztqLYRNgyxZ" class="chart tall" id="chartState"></div>
+    </div>
+
+    <div data-page-node-id="9GQcx081GyJoEDbH898t95" class="panel span3">
+      <div data-page-node-id="u7H7CRdDXhPWhCPm3z1VYU" class="phead"><h2 data-page-node-id="aWjcioTFviJGFTNVbUVMMi"><!--pnid:BwTq1z7aRcsClPwQQL41do-->评分分布</h2><span data-page-node-id="WO91EMd4r7miJIetoaoy7g" class="cap" id="rateCap"><!--pnid:zeAVaJDrQDK7k1olQLsfOa-->—</span></div>
+      <div data-page-node-id="24gbtH1LpAfOzwbc1dwODZ" class="chart tall" id="chartRate"></div>
+    </div>
+
+    <div data-page-node-id="2BNSbnw5PETw1q1yk1TF2a" class="panel insight span6">
+      <h2 data-page-node-id="zgjMFz8Ic8SK6dkULJVBCi"><!--pnid:SRLB2XcXwFobG9D876NW57-->核心发现</h2>
+      <div data-page-node-id="RpalimWF2oR2kYuDv2Aoez" class="dyn" id="dyn"><!--pnid:NXVz32xNIkgjnz6iJRovhD-->—</div>
+      <p data-page-node-id="ZAfblkghxyZeJg1FC4iVkD" class="finding"><span data-page-node-id="YVEHPRRuQWHNMLVytaV6za" class="n"><!--pnid:8Vy2S2xvhn3gkriYVuIF8d-->Ⅰ</span><b data-page-node-id="RSWirPT5UB4xxxwAiJNBlw"><!--pnid:1mCoghDTx7K7ZU19tiOlMe-->增长是系统性的。</b><!--pnid:Jdq3zS5wZuFK5eCk1UaM4j-->GMV 同比在 2018 年全段持续为正，月度无异常峰值；订单量同步走高，属量价齐升的健康形态。</p>
+      <p data-page-node-id="NcmS6RoDtxAHsjDuZqbBXk" class="finding"><span data-page-node-id="nER9kHO5dpuYzwZvOF8fZd" class="n"><!--pnid:WmsyjaVEjW4DMeCq4uPssD-->Ⅱ</span><b data-page-node-id="zIsInt0n1EuY3PjZj8dWMc"><!--pnid:EP3yeBZx2gQ8Qe24OGrE2V-->头部集中，但远未一家独大。</b><!--pnid:hV20Xe99oInuRwUXmC2b95-->最大州体量约等于第二、第三州之和；前三州合计过半，其余各州仍贡献近半 GMV。</p>
+      <p data-page-node-id="Ip4XBj4Oh4LynRF0LUeEVv" class="finding"><span data-page-node-id="1ztKTqCJe93TXZAZ2uDnSO" class="n"><!--pnid:uLENgM7e6uMPqWM9KNdTpq-->Ⅲ</span><b data-page-node-id="qxZsxlT3Q7xECJqEu8XDQY"><!--pnid:hgXBCzgZNBnJMZahbLe4KQ-->口碑基本盘扎实，差评另有源头。</b><!--pnid:L4ZXqN9Ts7TnHbylXyF43R-->评分分布明显右偏，五星过半；按物流时效分档验证，快慢单差评率几乎无差——改进不应优先投向时效。</p>
+      <div data-page-node-id="1TveyXVkXorUNPXEtm8dsf" class="foot"><!--pnid:cryfwcYu4YuGY0l8nJ5s1R-->口径：GMV = 商品金额合计，不含运费与退款；客单价 = 订单总金额 ÷ 订单数；复购 = 同一用户 ≥2 单；比率类分母已排除缺失值。<br data-page-node-id="yGARnXruMpQkKTcyc8XEqO"><!--pnid:DZkQypYwHUuawFgTwjKq8b-->
+      数据为按 Olist 公开表结构重建的模拟数据集，非官方原始数据。</div>
+    </div>
+  </section>
+</div>
+
+<div data-page-node-id="8mbf3aiiVIcHWGwRmPvGPG" id="toast"></div>
+
+<script data-page-node-id="vYv5n52b33QIgItJyAy6W8" src="data/dataset.js"></script>
+<script data-page-node-id="FMnsTzi7oqtuXJnPI9S0d5" src="core.js"></script>
+<script data-page-node-id="QlMAiwroI58e5bCCyWDNRa" src="vendor/echarts.min.js"></script>
+<script data-page-node-id="ztS5laL7ZsyP2VxhAdYYkl" src="vendor/xlsx.full.min.js"></script>
+<script data-page-node-id="t4I3PzEF5GWXr1pULNuccT" data-pnid-children="rftxP61fEgloarcMuyhuly">
+(function () {
+  var C = window.OlistCore;
+  var D, ctx, filt, CH = {}, trendMode = 'yoy', source = '内置数据集';
+
+  var el = function (id) { return document.getElementById(id); };
+  var fmtM = function (v) { return 'R$ ' + (v / 1e6).toFixed(2) + 'M'; };
+  var fmtInt = function (v) { return Math.round(v).toLocaleString('en-US'); };
+  var fmtPct = function (v, d) { return (v * 100).toFixed(d === undefined ? 1 : d) + '%'; };
+  var signed = function (v) { return (v >= 0 ? '+' : '') + (v * 100).toFixed(1) + '%'; };
+
+  function toast(msg) {
+    var t = el('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._h);
+    t._h = setTimeout(function () { t.classList.remove('show'); }, 3200);
+  }
+
+  /* ---------------- url state ---------------- */
+  function writeHash() {
+    var p = [];
+    p.push('f=' + filt.from);
+    p.push('t=' + filt.to);
+    if (filt.cats.size) p.push('c=' + Array.from(filt.cats).join(','));
+    if (filt.sts.size) p.push('s=' + Array.from(filt.sts).join(','));
+    history.replaceState(null, '', '#' + p.join('&'));
+  }
+  function readHash() {
+    var h = location.hash.replace('#', '');
+    if (!h) return;
+    h.split('&').forEach(function (kv) {
+      var a = kv.split('='), k = a[0], v = a[1];
+      if (!v) return;
+      if (k === 'f') filt.from = Math.max(0, Math.min(+v, D.months.length - 1));
+      if (k === 't') filt.to = Math.max(0, Math.min(+v, D.months.length - 1));
+      if (k === 'c') v.split(',').forEach(function (x) { filt.cats.add(+x); });
+      if (k === 's') v.split(',').forEach(function (x) { filt.sts.add(+x); });
+    });
+    if (filt.from > filt.to) filt.from = filt.to;
+  }
+
+  /* ---------------- controls ---------------- */
+  function buildControls() {
+    var from = el('mFrom'), to = el('mTo');
+    from.innerHTML = ''; to.innerHTML = '';
+    D.months.forEach(function (m, i) {
+      from.insertAdjacentHTML('beforeend', '<option value="' + i + '">' + m + '</option>');
+      to.insertAdjacentHTML('beforeend', '<option value="' + i + '">' + m + '</option>');
+    });
+    from.value = filt.from; to.value = filt.to;
+    from.onchange = function () {
+      filt.from = +from.value;
+      if (filt.from > filt.to) { filt.to = filt.from; to.value = filt.to; }
+      render();
+    };
+    to.onchange = function () {
+      filt.to = +to.value;
+      if (filt.to < filt.from) { filt.from = filt.to; from.value = filt.from; }
+      render();
+    };
+
+    var cc = el('catChips'), sc = el('stChips');
+    cc.innerHTML = ''; sc.innerHTML = '';
+    D.cats.forEach(function (c, i) {
+      var b = document.createElement('button');
+      b.className = 'chip'; b.textContent = c; b.dataset.i = i;
+      b.onclick = function () { toggle(filt.cats, i); };
+      cc.appendChild(b);
+    });
+    D.states.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.className = 'chip'; b.textContent = s; b.dataset.i = i;
+      b.onclick = function () { toggle(filt.sts, i); };
+      sc.appendChild(b);
+    });
+  }
+
+  function toggle(set, i) {
+    if (set.has(i)) set.delete(i); else set.add(i);
+    render();
+  }
+
+  function syncChips() {
+    Array.prototype.forEach.call(el('catChips').children, function (b) {
+      b.classList.toggle('on', filt.cats.has(+b.dataset.i));
+    });
+    Array.prototype.forEach.call(el('stChips').children, function (b) {
+      b.classList.toggle('on', filt.sts.has(+b.dataset.i));
+    });
+    el('catHint').textContent = filt.cats.size ? '已选 ' + filt.cats.size + ' 项' : '全部';
+    el('stHint').textContent = filt.sts.size ? '已选 ' + filt.sts.size + ' 项' : '全州';
+    el('mFrom').value = filt.from;
+    el('mTo').value = filt.to;
+  }
+
+  /* ---------------- charts ---------------- */
+  function axisCommon() {
+    return {
+      axisLine: { lineStyle: { color: 'rgba(244,241,234,.14)' } },
+      axisTick: { show: false },
+      axisLabel: { color: '#8b8880', fontSize: 10.5 }
+    };
+  }
+
+  function renderTrend(r) {
+    var gmv = r.series.map(function (v) { return +(v / 1e6).toFixed(3); });
+    var line = trendMode === 'yoy' ? r.yoy : r.mom;
+    var opt = {
+      backgroundColor: 'transparent',
+      grid: { left: 52, right: 46, top: 18, bottom: 26 },
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#15151b',
+        borderColor: 'rgba(244,241,234,.16)',
+        textStyle: { color: '#f4f1ea', fontSize: 11.5 },
+        formatter: function (ps) {
+          var s = '<b>' + ps[0].axisValue + '</b>';
+          ps.forEach(function (p) {
+            if (p.seriesIndex === 0) s += '<br/>GMV &nbsp;R$ ' + p.value.toFixed(2) + 'M';
+            else if (p.value !== null && p.value !== undefined) s += '<br/>' + (trendMode === 'yoy' ? '同比' : '环比') + ' &nbsp;' + p.value.toFixed(1) + '%';
+          });
+          return s;
+        }
+      },
+      xAxis: Object.assign({ type: 'category', data: r.labels, boundaryGap: true }, axisCommon(), {
+        axisLabel: { color: '#8b8880', fontSize: 10, interval: r.labels.length > 14 ? 1 : 0, rotate: 0 },
+        splitLine: { show: false }
+      }),
+      yAxis: [
+        Object.assign({ type: 'value' }, axisCommon(), {
+          axisLabel: { color: '#8b8880', fontSize: 10, formatter: function (v) { return v >= 10 ? v.toFixed(0) + 'M' : v.toFixed(1) + 'M'; } },
+          splitLine: { lineStyle: { color: 'rgba(244,241,234,.055)' } }
+        }),
+        {
+          type: 'value',
+          axisLine: { show: false }, axisTick: { show: false },
+          axisLabel: { color: '#6d6b66', fontSize: 10, formatter: function (v) { return v.toFixed(0) + '%'; } },
+          splitLine: { show: false }
+        }
+      ],
+      series: [
+        {
+          name: 'GMV', type: 'bar', barMaxWidth: 24,
+          data: gmv,
+          itemStyle: { color: '#c9a13f', borderRadius: [2, 2, 0, 0] }
+        },
+        {
+          name: trendMode === 'yoy' ? '同比' : '环比', type: 'line', yAxisIndex: 1,
+          data: line, connectNulls: false, symbol: 'circle', symbolSize: 3.5,
+          lineStyle: { color: '#8fb3c9', width: 1.5 },
+          itemStyle: { color: '#8fb3c9' }
+        }
+      ]
+    };
+    CH.trend.setOption(opt, true);
+  }
+
+  function renderCat(r) {
+    var list = r.cats.slice().reverse();
+    var data = list.map(function (c) {
+      var selected = filt.cats.has(c.i);
+      return {
+        value: +(c.v / 1e6).toFixed(3),
+        i: c.i,
+        itemStyle: {
+          color: filt.cats.size ? (selected ? '#c9a13f' : 'rgba(201,161,63,.22)') : '#c9a13f',
+          borderRadius: [0, 2, 2, 0]
+        }
+      };
+    });
+    CH.cat.setOption({
+      backgroundColor: 'transparent',
+      grid: { left: 84, right: 46, top: 8, bottom: 8 },
+      tooltip: {
+        trigger: 'item', backgroundColor: '#15151b', borderColor: 'rgba(244,241,234,.16)',
+        textStyle: { color: '#f4f1ea', fontSize: 11.5 },
+        formatter: function (p) {
+          return p.name + '<br/>GMV &nbsp;R$ ' + p.value.toFixed(2) + 'M<br/>占比 &nbsp;' + (r.catTotal ? (p.value * 1e6 / r.catTotal * 100).toFixed(1) : 0) + '%';
+        }
+      },
+      xAxis: Object.assign({ type: 'value' }, axisCommon(), {
+        axisLabel: { color: '#6d6b66', fontSize: 9.5, formatter: function (v) { return v + 'M'; } },
+        splitLine: { lineStyle: { color: 'rgba(244,241,234,.05)' } }
+      }),
+      yAxis: Object.assign({ type: 'category', data: list.map(function (c) { return c.name; }) }, axisCommon(), {
+        axisLabel: { color: '#c9c5bb', fontSize: 10 },
+        axisLine: { show: false }
+      }),
+      series: [{
+        type: 'bar', data: data, barMaxWidth: 12,
+        label: {
+          show: true, position: 'right', color: '#8b8880', fontSize: 9.5,
+          formatter: function (p) { return p.value.toFixed(2) + 'M'; }
+        }
+      }]
+    }, true);
+  }
+
+  function renderState(r) {
+    var list = r.states.slice().reverse();
+    var total = r.stateTotal || 1;
+    var data = list.map(function (s) {
+      var selected = filt.sts.has(s.i);
+      return {
+        value: +(s.v / 1e6).toFixed(2),
+        i: s.i,
+        itemStyle: {
+          color: filt.sts.size ? (selected ? '#c9a13f' : 'rgba(201,161,63,.22)') : '#c9a13f',
+          borderRadius: [0, 2, 2, 0]
+        }
+      };
+    });
+    CH.state.setOption({
+      backgroundColor: 'transparent',
+      grid: { left: 46, right: 46, top: 8, bottom: 8 },
+      tooltip: {
+        trigger: 'item', backgroundColor: '#15151b', borderColor: 'rgba(244,241,234,.16)',
+        textStyle: { color: '#f4f1ea', fontSize: 11.5 },
+        formatter: function (p) {
+          return p.name + '<br/>GMV &nbsp;R$ ' + p.value.toFixed(2) + 'M<br/>占比 &nbsp;' + (p.value * 1e6 / total * 100).toFixed(1) + '%';
+        }
+      },
+      xAxis: Object.assign({ type: 'value' }, axisCommon(), {
+        axisLabel: { color: '#6d6b66', fontSize: 9.5, formatter: '{value}M' },
+        splitLine: { lineStyle: { color: 'rgba(244,241,234,.05)' } }
+      }),
+      yAxis: Object.assign({ type: 'category', data: list.map(function (s) { return s.name; }) }, axisCommon(), {
+        axisLabel: { color: '#c9c5bb', fontSize: 9.5 },
+        axisLine: { show: false }
+      }),
+      series: [{
+        type: 'bar', data: data, barMaxWidth: 9,
+        label: { show: true, position: 'right', color: '#8b8880', fontSize: 9, formatter: '{c}M' }
+      }]
+    }, true);
+  }
+
+  function renderRate(r) {
+    var stars = r.rates.map(function (x) { return x.star + '星'; });
+    var pct = r.rates.map(function (x) { return +x.pct.toFixed(1); });
+    var cnt = r.rates.map(function (x) { return x.n; });
+    CH.rate.setOption({
+      backgroundColor: 'transparent',
+      grid: { left: 44, right: 14, top: 18, bottom: 24 },
+      tooltip: {
+        trigger: 'axis', backgroundColor: '#15151b', borderColor: 'rgba(244,241,234,.16)',
+        textStyle: { color: '#f4f1ea', fontSize: 11.5 },
+        formatter: function (ps) {
+          var i = ps[0].dataIndex;
+          return stars[i] + '<br/>订单行 ' + fmtInt(r.rates[i].n) + '<br/>占比 ' + pct[i] + '%';
+        }
+      },
+      xAxis: Object.assign({ type: 'category', data: stars }, axisCommon(), { axisLabel: { color: '#c9c5bb', fontSize: 10.5 } }),
+      yAxis: Object.assign({ type: 'value' }, axisCommon(), {
+        axisLabel: { color: '#6d6b66', fontSize: 9.5, formatter: function (v) { return v >= 1000 ? (v / 1000) + '千' : v; } },
+        splitLine: { lineStyle: { color: 'rgba(244,241,234,.05)' } }
+      }),
+      series: [{
+        type: 'bar', data: cnt, barMaxWidth: 34,
+        itemStyle: {
+          color: function (p) { return p.dataIndex >= 3 ? '#c9a13f' : 'rgba(207,122,95,.75)'; },
+          borderRadius: [2, 2, 0, 0]
+        },
+        label: { show: true, position: 'top', color: '#8b8880', fontSize: 9.5, formatter: function (p) { return (p.value / 1000).toFixed(1).replace(/\.0$/, '') + '千'; } }
+      }]
+    }, true);
+  }
+
+  /* ---------------- render ---------------- */
+  function render() {
+    var r = C.aggregate(ctx, filt);
+    syncChips();
+
+    el('kGmv').textContent = fmtM(r.gmv);
+    el('kGmvD').innerHTML = r.yoyGmv === null
+      ? '全期 · ' + fmtInt(r.orders) + ' 单'
+      : '同比 <em class="' + (r.yoyGmv < 0 ? 'down' : '') + '">' + signed(r.yoyGmv) + '</em>';
+
+    el('kOrd').textContent = fmtInt(r.orders);
+    el('kOrdD').innerHTML = r.yoyOrd === null
+      ? '买家 ' + fmtInt(r.buyers)
+      : '同比 <em class="' + (r.yoyOrd < 0 ? 'down' : '') + '">' + signed(r.yoyOrd) + '</em> · 买家 ' + fmtInt(r.buyers);
+
+    el('kAov').textContent = 'R$ ' + r.aov.toFixed(2);
+    el('kAovD').innerHTML = '订单总金额 ' + fmtM(r.amt);
+
+    el('kRep').textContent = fmtPct(r.repeatRate, 2);
+    el('kRepD').innerHTML = '复购用户 ' + fmtInt(r.repeatUsers);
+
+    el('dyn').innerHTML = '<b style="color:#f4f1ea">' + D.months[filt.from] + ' — ' + D.months[filt.to] + '</b>' +
+      ' · ' + (filt.cats.size ? '已选 ' + filt.cats.size + ' 品类' : '全品类') +
+      ' · ' + (filt.sts.size ? '已选 ' + filt.sts.size + ' 州' : '全州') +
+      ' ｜ GMV ' + fmtM(r.gmv) + ' · 同比 ' + (r.yoyGmv === null ? '—' : signed(r.yoyGmv)) +
+      ' · 订单 ' + fmtInt(r.orders);
+
+    el('rateCap').textContent = '有效 ' + fmtInt(r.ratingTotal) + ' 行';
+
+    renderTrend(r);
+    renderCat(r);
+    renderState(r);
+    renderRate(r);
+
+    writeHash();
+  }
+
+  function boot(data, src) {
+    D = data;
+    ctx = C.prep(D);
+    source = src || '内置数据集';
+    filt = { from: 0, to: D.months.length - 1, cats: new Set(), sts: new Set() };
+
+    el('period').textContent = D.months[0].replace('-', '.') + ' — ' + D.months[D.months.length - 1].replace('-', '.') +
+      ' · ' + fmtInt(D.meta.orders) + ' 单 · ' + D.cats.length + ' 品类 · ' + D.states.length + ' 州';
+    el('srcInfo').innerHTML = (source === '内置数据集'
+      ? '数据源：内置数据集'
+      : '数据源：本地导入') + '<br>生成于 ' + D.meta.generated;
+
+    buildControls();
+    readHash();
+    render();
+  }
+
+  /* ---------------- import ---------------- */
+  function toMonth(v) {
+    if (v === null || v === undefined) return null;
+    if (v instanceof Date) return v.toISOString().slice(0, 7);
+    if (typeof v === 'number') {
+      var d = XLSX.SSF.parse_date_code(v);
+      if (d) return d.y + '-' + String(d.m).padStart(2, '0');
+    }
+    var s = String(v);
+    var m = s.match(/(\d{4})[-\/年.]?(\d{1,2})/);
+    return m ? m[1] + '-' + String(+m[2]).padStart(2, '0') : null;
+  }
+
+  function sheet2rows(wb, name) {
+    var ws = wb.Sheets[name];
+    if (!ws) throw new Error('缺少工作表：' + name);
+    var rows = XLSX.utils.sheet_to_json(ws, { header: 1, raw: true, defval: null });
+    if (!rows.length) throw new Error('工作表为空：' + name);
+    var hdr = rows[0].map(function (h) { return String(h === null ? '' : h).trim(); });
+    return { hdr: hdr, body: rows.slice(1) };
+  }
+
+  function col(hdr, name, sheet) {
+    var i = hdr.indexOf(name);
+    if (i < 0) throw new Error('「' + sheet + '」缺少列：' + name);
+    return i;
+  }
+
+  function parseWorkbook(wb) {
+    var need = ['订单事实表', '订单明细事实表', '商品维度表', '用户维度表'];
+    need.forEach(function (n) { if (!wb.Sheets[n]) throw new Error('缺少工作表：' + n); });
+
+    var prod = sheet2rows(wb, '商品维度表');
+    var iC = col(prod.hdr, '品类中文名', '商品维度表');
+    var pid2cat = new Map(), cats = [], catIdx = new Map();
+    prod.body.forEach(function (r) {
+      if (!r[0]) return;
+      var c = r[iC] || '未知';
+      pid2cat.set(r[0], c);
+      if (!catIdx.has(c)) { catIdx.set(c, cats.length); cats.push(c); }
+    });
+
+    var users = sheet2rows(wb, '用户维度表');
+    var iS = col(users.hdr, '用户所在州', '用户维度表');
+    var uid2st = new Map(), states = [], stIdx = new Map();
+    users.body.forEach(function (r) {
+      if (!r[0]) return;
+      var s = r[iS] || '未知';
+      uid2st.set(r[0], s);
+      if (!stIdx.has(s)) { stIdx.set(s, states.length); states.push(s); }
+    });
+
+    var ords = sheet2rows(wb, '订单事实表');
+    var oId = col(ords.hdr, '订单ID', '订单事实表');
+    var oDate = col(ords.hdr, '下单日期', '订单事实表');
+    var oUser = col(ords.hdr, '用户ID', '订单事实表');
+    var oGmv = col(ords.hdr, '商品总价', '订单事实表');
+    var oAmt = col(ords.hdr, '订单总金额', '订单事实表');
+    var oFrt = col(ords.hdr, '运费总计', '订单事实表');
+
+    var months = [], mIdx = new Map();
+    var orders = [], oIdx = new Map(), uids = new Map();
+    ords.body.forEach(function (r) {
+      if (r[oId] === null || r[oId] === undefined) return;
+      var m = toMonth(r[oDate]);
+      if (!m) return;
+      if (!mIdx.has(m)) { mIdx.set(m, months.length); months.push(m); }
+      var u = r[oUser];
+      if (!uids.has(u)) uids.set(u, uids.size);
+      oIdx.set(r[oId], orders.length);
+      orders.push([
+        mIdx.get(m),
+        stIdx.get(uid2st.get(u)) || 0,
+        uids.get(u),
+        Math.round((+r[oGmv] || 0) * 100),
+        Math.round((+r[oAmt] || 0) * 100),
+        Math.round((+r[oFrt] || 0) * 100)
+      ]);
+    });
+
+    var its = sheet2rows(wb, '订单明细事实表');
+    var iOrd = col(its.hdr, '订单ID', '订单明细事实表');
+    var iProd = col(its.hdr, '商品ID', '订单明细事实表');
+    var iRate = its.hdr.indexOf('评分');
+    var iPrice = col(its.hdr, '商品价格', '订单明细事实表');
+    var items = [];
+    its.body.forEach(function (r) {
+      var oi = oIdx.get(r[iOrd]);
+      if (oi === undefined) return;
+      var c = pid2cat.get(r[iProd]);
+      var rt = 0;
+      if (iRate >= 0 && r[iRate] !== null && r[iRate] !== '') {
+        var n = parseInt(r[iRate], 10);
+        if (n >= 1 && n <= 5) rt = n;
+      }
+      items.push([oi, catIdx.get(c) || 0, rt, Math.round((+r[iPrice] || 0) * 100)]);
+    });
+
+    var mon = months.slice().sort();
+    var remap = new Map(mon.map(function (m, i) { return [m, i]; }));
+    orders.forEach(function (o) { o[0] = remap.get(months[o[0]]); });
+    months = mon;
+
+    var gmv = orders.reduce(function (a, o) { return a + o[3]; }, 0) / 100;
+
+    return {
+      meta: {
+        generated: new Date().toISOString().slice(0, 10),
+        source: '本地导入',
+        orders: orders.length,
+        items: items.length,
+        buyers: uids.size,
+        repeat_users: 0,
+        gmv: Math.round(gmv * 100) / 100,
+        period: [months[0], months[months.length - 1]]
+      },
+      months: months,
+      cats: cats,
+      states: states,
+      orders: orders,
+      items: items
+    };
+  }
+
+  /* ---------------- IndexedDB ---------------- */
+  function idb() {
+    return new Promise(function (res, rej) {
+      var r = indexedDB.open('olist-viz', 1);
+      r.onupgradeneeded = function () { r.result.createObjectStore('kv'); };
+      r.onsuccess = function () { res(r.result); };
+      r.onerror = function () { rej(r.error); };
+    });
+  }
+  function idbGet(k) {
+    return idb().then(function (db) {
+      return new Promise(function (res) {
+        var q = db.transaction('kv', 'readonly').objectStore('kv').get(k);
+        q.onsuccess = function () { res(q.result || null); };
+        q.onerror = function () { res(null); };
+      });
+    }).catch(function () { return null; });
+  }
+  function idbSet(k, v) {
+    return idb().then(function (db) {
+      return new Promise(function (res) {
+        var q = db.transaction('kv', 'readwrite').objectStore('kv').put(v, k);
+        q.onsuccess = function () { res(true); };
+        q.onerror = function () { res(false); };
+      });
+    }).catch(function () { return false; });
+  }
+
+  el('file').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    toast('正在解析 ' + f.name + ' …');
+    var rd = new FileReader();
+    rd.onload = function () {
+      try {
+        var wb = XLSX.read(new Uint8Array(rd.result), { type: 'array' });
+        var data = parseWorkbook(wb);
+        history.replaceState(null, '', location.pathname);
+        idbSet('dataset', data);
+        boot(data, '本地导入');
+        toast('已载入 ' + fmtInt(data.meta.orders) + ' 单 · GMV R$ ' + (data.meta.gmv / 1e6).toFixed(2) + 'M');
+      } catch (err) {
+        toast('导入失败：' + err.message);
+      }
+      e.target.value = '';
+    };
+    rd.readAsArrayBuffer(f);
+  });
+
+  el('reset').addEventListener('click', function () {
+    filt = { from: 0, to: D.months.length - 1, cats: new Set(), sts: new Set() };
+    render();
+  });
+
+  Array.prototype.forEach.call(el('trendSeg').children, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(el('trendSeg').children, function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      trendMode = b.dataset.m;
+      render();
+    });
+  });
+
+  /* ---------------- init ---------------- */
+  function initCharts() {
+    CH.trend = echarts.init(el('chartTrend'), null, { renderer: 'canvas' });
+    CH.cat = echarts.init(el('chartCat'), null, { renderer: 'canvas' });
+    CH.state = echarts.init(el('chartState'), null, { renderer: 'canvas' });
+    CH.rate = echarts.init(el('chartRate'), null, { renderer: 'canvas' });
+
+    CH.cat.on('click', function (p) { if (p.data && p.data.i !== undefined) toggle(filt.cats, p.data.i); });
+    CH.state.on('click', function (p) { if (p.data && p.data.i !== undefined) toggle(filt.sts, p.data.i); });
+
+    var t;
+    window.addEventListener('resize', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        Object.keys(CH).forEach(function (k) { CH[k].resize(); });
+      }, 120);
+    });
+  }
+
+  function bootSafe(data, src) {
+    try {
+      boot(data, src);
+    } catch (e) {
+      toast('初始化异常：' + e.message);
+    }
+  }
+  var raced = (typeof indexedDB !== 'undefined')
+    ? Promise.race([
+        idbGet('dataset'),
+        new Promise(function (r) { setTimeout(function () { r(null); }, 1200); })
+      ])
+    : Promise.resolve(null);
+  raced.then(function (saved) {
+    initCharts();
+    if (saved && saved.months && saved.orders) {
+      bootSafe(saved, '本地导入');
+    } else {
+      bootSafe(window.OLIST_DATA, '内置数据集');
+    }
+  }).catch(function () {
+    initCharts();
+    bootSafe(window.OLIST_DATA, '内置数据集');
+  });
+})();
+
+/* ---------- embed：向父页面上报真实高度，供外层自适应，避免被裁切 ---------- */
+(function(){
+  if (location.search.indexOf('embed') < 0) return;
+  var last = 0, timer = null;
+  function report(){
+    var h = Math.max(
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement ? document.documentElement.scrollHeight : 0
+    );
+    if (h > 200 && Math.abs(h - last) > 4) {
+      last = h;
+      try { parent.postMessage({ __olistHeight: h }, '*'); } catch (e) {}
+    }
+  }
+  function schedule(){
+    clearTimeout(timer);
+    timer = setTimeout(report, 120);
+  }
+  addEventListener('load', function(){ report(); setTimeout(report, 400); setTimeout(report, 1200); });
+  if (window.ResizeObserver && document.body) {
+    new ResizeObserver(schedule).observe(document.body);
+  }
+  addEventListener('resize', schedule);
+})();
+</script>
+</body>
+</html>
